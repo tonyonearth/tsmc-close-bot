@@ -1,0 +1,43 @@
+name: tsmc-close-notify
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 14 * * 1-5'
+      timezone: 'Asia/Taipei'
+
+permissions: {}
+
+concurrency:
+  group: tsmc-close-notify
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Send TSMC close notification email
+        env:
+          SMTP_HOST: smtp.gmail.com
+          SMTP_PORT: '587'
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          STOCK_NO: '2330'
+          STOCK_NAME: '台積電'
+        run: python main.py
