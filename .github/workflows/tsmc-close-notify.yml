@@ -3,7 +3,7 @@ name: tsmc-close-notify
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 14 * * 1-5'
+    - cron: '09 21 * * 1-5'
       timezone: 'Asia/Taipei'
 
 permissions: {}
