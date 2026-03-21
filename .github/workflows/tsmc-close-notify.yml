@@ -38,6 +38,7 @@ jobs:
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          # 這裡依然讀取 Secret，但我們稍後會在 Python 處理字串切割
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           STOCK_NO: '2330'
           STOCK_NAME: '台積電'

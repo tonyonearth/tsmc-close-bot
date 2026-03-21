@@ -154,14 +154,16 @@ def send_email(
     smtp_username: str,
     smtp_password: str,
     email_from: str,
-    email_to: str,
+    email_to: str, # 這裡傳進來會是 "a@gmail.com, b@gmail.com" 這樣的字串
     subject: str,
     body: str,
 ) -> None:
     message = EmailMessage()
     message["Subject"] = subject
     message["From"] = email_from
-    message["To"] = email_to
+    # message["To"] = email_to # EmailMessage 會自動處理逗點分隔的字串
+    message["To"] = "已寄送"#email_from # 給自己，或寫「群組通知」
+    message["Bcc"] = email_to # 將多個收件人放在密件抄送
     message.set_content(body)
 
     with smtplib.SMTP(smtp_host, smtp_port, timeout=30) as server:
