@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 06:10 UTC = 14:10 Asia/Taipei (UTC+8), Monday-Friday
-    - cron: '50 13 * * 1-5'
+    - cron: '25 15 * * 1-7'
 #      timezone: 'Asia/Taipei'
 
 permissions: {}
