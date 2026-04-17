@@ -4,7 +4,7 @@
 
 1. 查詢台股 **台積電（2330）** 當月成交資料
 2. 取出「今天」的成交結果
-3. 用 Email 將收盤資訊寄給你
+3. 用 Email 將收盤資訊寄到指定 email
 4. 若今天沒有新成交資料，則寄出「休市 / 無當日資料」通知
 
 ## 專案結構
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ### 3. 設定環境變數
 
-你可以參考 `.env.example`：
+可參考 `.env.example`：
 
 ```bash
 export SMTP_USERNAME='your_gmail@gmail.com'
@@ -84,7 +84,7 @@ Settings → Secrets and variables → Actions → New repository secret
 
 ### 3. 啟用 Gmail App Password
 
-若你用 Gmail / Google Workspace SMTP：
+若用 Gmail / Google Workspace SMTP：
 
 1. 先開啟 Google 帳號的 **2-Step Verification**
 2. 建立 **App Password**
@@ -98,7 +98,7 @@ Settings → Secrets and variables → Actions → New repository secret
 GitHub → Actions → tsmc-close-notify → Run workflow
 ```
 
-先確認你能收到信。
+先確認能收到信。
 
 ### 5. 等待排程自動執行
 
@@ -128,7 +128,7 @@ STOCK_NAME: '台積電'
 
 ### 改寄件方式
 
-若你不想用 Gmail，也可以改成其他 SMTP 服務，只要調整：
+若不想用 Gmail，也可以改成其他 SMTP 服務，只要調整：
 
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -147,4 +147,4 @@ STOCK_NAME: '台積電'
 
 ## 授權
 
-MIT（你可以自行補上 LICENSE）
+MIT（可自行補上 LICENSE）
